@@ -246,7 +246,9 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 RUN du -ah /root \
     && rm -rfv /root/* \
-    && rm -rfv /root/.[^.]* /root/.??*
+    && rm -rfv /root/.[^.]* /root/.??* \
+    && pip install dashscope \
+    && pip install nunchaku
 
 COPY runner-scripts/.  /runner-scripts/
 

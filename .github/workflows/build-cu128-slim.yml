@@ -2,16 +2,6 @@ name: Publish 'cu128-slim' to Docker Hub
 
 on: 
   workflow_dispatch: # Can be manually triggered
-  schedule: # Runs on every Monday & Friday, 07:00 UTC
-    - cron: '0 7 * * 1,5'
-  push: 
-    branches: [ main ]
-    paths-ignore:
-      - '**'
-      - '!cu128-slim/Dockerfile'
-      - '!cu128-slim/builder-scripts/**'
-      - '!cu128-slim/runner-scripts/**'
-      - '!.github/workflows/build-cu128-slim.yml'
 
 jobs:
 
@@ -56,6 +46,6 @@ jobs:
           context: ./cu128-slim
           file: ./cu128-slim/Dockerfile
           tags:  |
-            yanwk/comfyui-boot:cu128-slim
-            yanwk/comfyui-boot:cu128-slim-${{ steps.date.outputs.date }}
+            xkrfer/comfyui-boot:cu128-slim
+            xkrfer/comfyui-boot:cu128-slim-${{ steps.date.outputs.date }}
           push: true
