@@ -2,6 +2,12 @@ name: Publish 'cu128-slim' to Docker Hub
 
 on: 
   workflow_dispatch: # Can be manually triggered
+      inputs:
+        # [新增] 添加输入变量，默认值可以是 'latest' 或者留空
+        comfyui_version:
+          description: 'ComfyUI Version (Tag, Branch, or Commit SHA)'
+          required: false
+          default: 'latest'
 
 jobs:
 
@@ -49,3 +55,6 @@ jobs:
             xkrfer/comfyui-boot:cu128-slim
             xkrfer/comfyui-boot:cu128-slim-${{ steps.date.outputs.date }}
           push: true
+          # [新增] 将输入变量传递给 Docker 构建参数
+          build-args: |
+            COMFYUI_VERSION=${{ github.event.inputs.comfyui_version }}
