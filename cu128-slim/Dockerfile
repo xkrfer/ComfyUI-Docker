@@ -236,7 +236,9 @@ WORKDIR /default-comfyui-bundle
 # [新增] 接收构建参数并转为环境变量
 ARG COMFYUI_VERSION=latest
 ENV COMFYUI_VERSION=${COMFYUI_VERSION}
+ARG BUILD_DATE
 
+RUN echo "Building on date: $BUILD_DATE"
 RUN bash /builder-scripts/preload-cache.sh
 
 # Install deps (comfyui-frontend-package, etc) pair to the preloaded ComfyUI version

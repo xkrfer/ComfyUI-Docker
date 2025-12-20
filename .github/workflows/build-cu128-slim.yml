@@ -58,3 +58,4 @@ jobs:
           # [新增] 将输入变量传递给 Docker 构建参数
           build-args: |
             COMFYUI_VERSION=${{ github.event.inputs.comfyui_version }}
+            BUILD_DATE=${{ steps.date.outputs.date }}
